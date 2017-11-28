@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>TaxHave24 > Address</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+          integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+            integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+            crossorigin=""></script>
+
+    <style>
+        #mapid { height: 360px; }
+        #mapBox { width: 420px; display: inline-block;vertical-align: top }
+        #entityList {display: inline-block}
+    </style>
+</head>
+<body>
+<p>
+    <a th:href="@{/}">back</a>
+</p>
+
+<div id="mapBox">
+<div id="mapid"></div>
+</div>
+<div id="entityList">
+    Trusted by:
+    <ul>
+        <li th:each="entity : ${address.registeredHere}" th:text="${entity.name}"></li>
+    </ul>
+</div>
+
+<script th:inline="javascript">
+    var lat = [[${address.location.x}]];
+    var long = [[${address.location.y}]];
+    var address = [[${address.address}]];
+    var mymap = L.map('mapid').setView([lat, long], 16);
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap);
+    var marker = L.marker([lat, long]).addTo(mymap);
+    marker.bindPopup(address);
+</script>
+</body>
+</html>

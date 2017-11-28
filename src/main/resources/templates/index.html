@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>TaxHaven24</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<body>
+<h2>TaxHaven24</h2>
+<h4>
+    <span th:text="${#numbers.formatInteger(officerCount, 3, 'DEFAULT')}"></span> persons and companies
+    with <span th:text="${#numbers.formatInteger(entityCount, 3, 'DEFAULT')}"></span> offshore possibilities
+    waiting for you.
+</h4>
+
+<table>
+    <thead>
+    <tr><th>Name</th><th>trust by</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="topAddress : ${topAddresses}">
+        <td><a href="#" th:href="@{/address/{addressId}(addressId=${topAddress.addressId})}" th:text="${topAddress.address}"></a></td>
+        <td th:text="${topAddress.count}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Not what you are looking for. Find new soul mates near you...</h3>
+<form action="#" th:action="@{/address/find}" th:object="${addressQuery}" method="get">
+    <select th:field="*{value}">
+        <option th:each="location : ${locations}" th:text="${location}" th:value="${location}"></option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+</body>
+</html>

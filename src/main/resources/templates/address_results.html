@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>TaxHave24 > Address</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+          integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+            integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+            crossorigin=""></script>
+    <style>
+        #mapid {
+            height: 360px;
+        }
+
+        #mapBox {
+            width: 420px;
+            display: inline-block;
+            vertical-align: top
+        }
+
+        #entityList {
+            display: inline-block
+        }
+    </style>
+</head>
+<body>
+<p>
+    <a th:href="@{/}">back</a>
+</p>
+<div id="mapBox">
+    <div id="mapid"></div>
+</div>
+<div id="entityList">
+    Adresses you may like:
+    <ul>
+        <li th:each="address : ${addresses}" th:text="${address.address}"></li>
+    </ul>
+</div>
+<script th:inline="javascript">
+    var centerLatitude = [[${mapCenter.x}]];
+    var centerLongitude = [[${mapCenter.y}]];
+
+
+    var mymap = L.map('mapid').setView([centerLatitude, centerLongitude], 10);
+
+    var addresses = [[${addresses}]];
+    for (let address of addresses) {
+        var lat = address.location.x;
+        var long = address.location.y;
+
+        var entryAddress = address.address;
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap);
+        var marker = L.marker([lat, long]).addTo(mymap);
+        marker.bindPopup(entryAddress);
+    }
+</script>
+</body>
+</html>

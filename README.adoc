@@ -1,0 +1,15 @@
+= Spring Data Neo4j Paradise Papers
+
+Exploring the Paradise Papers (and more) with Spring Data Neo4j.
+
+=== See what is the trending place to create an offshore company
+image:docs/sdn_pp_overview.png[overview, title="Overview"]
+
+=== Visit the top addresses to see who also likes to save a little
+image:docs/sdn_pp_topAddresses.png[topAdresses, title="Top addresses"]
+
+=== Visit the top addresses to see who also likes to save a little
+image:docs/sdn_pp_address_search.png[addressSearch, title="Address search"]
+
+TIP: Currently only usable with a specific data set.
+Stay tuned for more info.
