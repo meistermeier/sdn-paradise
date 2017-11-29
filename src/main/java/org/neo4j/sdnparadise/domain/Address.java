@@ -1,5 +1,6 @@
 package org.neo4j.sdnparadise.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
@@ -21,6 +22,7 @@ public class Address {
 
 	private String address;
 
+	@JsonIgnore // ignore for thymeleaf javascript inlining
 	@Relationship(type = "REGISTERED_ADDRESS", direction = "INCOMING")
 	private Set<Entity> registeredHere;
 
