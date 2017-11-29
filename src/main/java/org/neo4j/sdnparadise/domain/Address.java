@@ -18,6 +18,7 @@ public class Address {
 	@Convert(PointConverter.class)
 	private Point location;
 
+	// just needed for existence check on entity
 	private double latitude;
 
 	private String address;
