@@ -6,6 +6,7 @@ import org.neo4j.sdnparadise.repository.OfficerRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.stream.Collectors;
@@ -29,10 +30,10 @@ public class WelcomeController {
 	}
 
 	@GetMapping("/")
-	public String index(Model model) {
+	public String index(Model model, @RequestParam(name="limit", defaultValue="10") int limit) {
 		model.addAttribute("officerCount", officerRepository.count());
 		model.addAttribute("entityCount", entityRepository.count());
-		model.addAttribute("topAddresses", addressRepository.findTopAddresses());
+		model.addAttribute("topAddresses", addressRepository.findTopAddresses(limit));
 		model.addAttribute("locations", KnownLocations.LOCATIONS.keySet().stream().sorted().collect(Collectors.toList()));
 		return "index";
 	}

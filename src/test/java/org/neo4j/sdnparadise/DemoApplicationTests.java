@@ -21,8 +21,9 @@ public class DemoApplicationTests {
 
 	@Test
 	public void findTopAddresses() {
-		List<TopAddress> topAddresses = addressRepository.findTopAddresses();
+		List<TopAddress> topAddresses = addressRepository.findTopAddresses(10);
 		assertEquals(10, topAddresses.size());
+		assertTrue(topAddresses.get(0).getCount() > 5000);
 	}
 
 }
