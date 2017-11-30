@@ -32,6 +32,7 @@ public class AddressController {
 	public String addressSearch(@ModelAttribute final AddressQuery addressQuery, final BindingResult bindingResult, Model model) {
 		Point location = KnownLocations.LOCATIONS.get(addressQuery.getValue());
 		List<Address> addresses = addressRepository.findByLatitudeExistsAndLocationNear(new Distance(100), location);
+		model.addAttribute("location", addressQuery.getValue());
 		model.addAttribute("addresses", addresses);
 		model.addAttribute("mapCenter", calculateMapCenter(location, addresses));
 		return "address_results";
