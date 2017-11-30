@@ -1,37 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <meta charset="UTF-8"/>
     <title>TaxHaven24</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
-<h2>TaxHaven24</h2>
-<h4>
-    <span th:text="${#numbers.formatInteger(officerCount, 3, 'DEFAULT')}"></span> persons and companies
+   <nav class="navbar navbar-inverse navbar-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Tax Haven 24</a>
+        </div>
+         <div id="navbar" class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">City <span class="caret"></span></a>
+              <ul class="dropdown-menu" th:object="${addressQuery}" th:field="*{value}">
+                <li th:each="location : ${locations}"><a href="" th:text="${location}" th:href="@{'/address/find?value=' + ${location}}"></a></li>
+              </ul>
+            </li>
+            <li class="active"><a href="/address/164425">Adresses</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	<div class="container theme-showcase" role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>TaxHaven24</h1>
+        <p>
+    There are <span th:text="${#numbers.formatInteger(officerCount, 3, 'DEFAULT')}"></span> persons and companies 
     with <span th:text="${#numbers.formatInteger(entityCount, 3, 'DEFAULT')}"></span> offshore possibilities
     waiting for you.
-</h4>
-
-<table>
-    <thead>
-    <tr><th>Name</th><th>trusted by</th></tr>
-    </thead>
-    <tbody>
-    <tr th:each="topAddress : ${topAddresses}">
-        <td><a href="#" th:href="@{/address/{addressId}(addressId=${topAddress.addressId})}" th:text="${topAddress.address}"></a></td>
-        <td th:text="${topAddress.count}"></td>
-    </tr>
-    </tbody>
-</table>
-
-<h3>Not what you are looking for. Find new soul mates near you...</h3>
-<form action="#" th:action="@{/address/find}" th:object="${addressQuery}" method="get">
-    <select th:field="*{value}">
-        <option th:each="location : ${locations}" th:text="${location}" th:value="${location}"></option>
-    </select>
-    <button type="submit">Search</button>
-</form>
+        </p>
+      </div>
+      <div class="page-header">
+        <h2>Top Tax Haven Addresses</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <table class="table">
+               <thead>
+               <tr><th>Name</th><th>trusted by</th></tr>
+               </thead>
+               <tbody>
+               <tr th:each="topAddress : ${topAddresses}">
+                   <td><a href="#" th:href="@{/address/{addressId}(addressId=${topAddress.addressId})}" th:text="${topAddress.address}"></a></td>
+                   <td th:text="${topAddress.count}"></td>
+               </tr>
+               </tbody>
+           </table>
+	    </div>
+	  </div>
+    </div>
+    <footer class="footer">
+       Using data from the <a href="http://offshoreleaks.icij.org/database">ICIJ Offshore Leaks</a>, served by <a href="http://neo4j.com/developer" target="_blank">Neo4j</a>.
+	</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
