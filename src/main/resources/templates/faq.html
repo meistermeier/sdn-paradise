@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="html_fragments :: head"></head>
+<body>
+<div th:replace="navigation :: navigation"></div>
+<div class="container">
+    <h3>What are the types of data used in this application?</h3>
+    <dl>
+        <dt>Officer</dt>
+        <dd>a person or company who plays a role in an offshore entity.</dd>
+        <dt>Intermediary</dt>
+        <dd>go-between for someone seeking an offshore corporation and an offshore service provider — usually a law-firm
+            or a middleman that asks an offshore service provider to create an offshore firm for a client.
+        </dd>
+        <dt>Entity</dt>
+        <dd>a company, trust or fund created in a low-tax, offshore jurisdiction by an agent.</dd>
+        <dt>Address</dt>
+        <dd>...an address.</dd>
+    </dl>
+</div>
+<footer th:replace="html_fragments :: footer"></footer>
+<div th:replace="html_fragments :: script_footer"></div>
+</body>
+</html>

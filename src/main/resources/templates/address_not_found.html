@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="html_fragments :: head"></head>
+<body>
+<div th:replace="navigation :: navigation"></div>
+<div class="container theme-showcase" role="main">
+    <div class="jumbotron">
+        <h3>Could not find this city.</h3>
+        <p>
+            Please use one of the suggested cities in the search box.
+            These are the only ones that currently eligibly for geo search.
+        </p>
+    </div>
+</div>
+<footer th:replace="html_fragments :: footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="html_fragments :: head"></head>
+<body>
+<div th:replace="navigation :: navigation"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Top addresses</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-sm">
+                <caption>Top addresses by entities registered</caption>
+                <thead class="thead-dark">
+                <tr>
+                    <th class="w-75">Name</th>
+                    <th class="w-25">Entities registered</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="topAddress : ${topAddresses}">
+                    <td><a href="#" th:href="@{/address/{addressId}(addressId=${topAddress.addressId})}"
+                           th:text="${topAddress.address}"></a></td>
+                    <td th:text="${topAddress.count}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer th:replace="html_fragments :: footer"></footer>
+<div th:replace="html_fragments :: script_footer"></div>
+</body>
+</html>

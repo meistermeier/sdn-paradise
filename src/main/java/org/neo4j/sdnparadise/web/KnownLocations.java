@@ -13,6 +13,7 @@ import java.util.Map;
 
 class KnownLocations {
 
+	// sometimes it is easier to solve things "simple" in the first run ;)
 	static final Map<String, Point> LOCATIONS = new HashMap<>();
 
 	static {

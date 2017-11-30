@@ -1,66 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <meta charset="UTF-8"/>
-    <title>TaxHaven24</title>
+<head th:replace="html_fragments :: head">
 </head>
 <body>
-   <nav class="navbar navbar-inverse navbar-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Tax Haven 24</a>
-        </div>
-         <div id="navbar" class="navbar-collapse collapse">
-          
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">City <span class="caret"></span></a>
-              <ul class="dropdown-menu" th:object="${addressQuery}" th:field="*{value}">
-                <li th:each="location : ${locations}"><a href="" th:text="${location}" th:href="@{'/address/find?value=' + ${location}}"></a></li>
-              </ul>
-            </li>
-            <li class="active"><a href="/address/164425">Adresses</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-	<div class="container theme-showcase" role="main">
-
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
+<div th:replace="navigation :: navigation"></div>
+<div class="container" role="main">
+    <div class="jumbotron">
         <h1>TaxHaven24</h1>
         <p>
-    There are <span th:text="${#numbers.formatInteger(officerCount, 3, 'DEFAULT')}"></span> persons and companies 
-    with <span th:text="${#numbers.formatInteger(entityCount, 3, 'DEFAULT')}"></span> offshore possibilities
-    waiting for you.
+            There are <span th:text="${#numbers.formatInteger(officerCount, 3, 'DEFAULT')}"></span> persons and
+            companies
+            with <span th:text="${#numbers.formatInteger(entityCount, 3, 'DEFAULT')}"></span> offshore possibilities
+            waiting for you.
         </p>
-      </div>
-      <div class="page-header">
-        <h2>Top Tax Haven Addresses</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-          <table class="table">
-               <thead>
-               <tr><th>Name</th><th>trusted by</th></tr>
-               </thead>
-               <tbody>
-               <tr th:each="topAddress : ${topAddresses}">
-                   <td><a href="#" th:href="@{/address/{addressId}(addressId=${topAddress.addressId})}" th:text="${topAddress.address}"></a></td>
-                   <td th:text="${topAddress.count}"></td>
-               </tr>
-               </tbody>
-           </table>
-	    </div>
-	  </div>
+        <b>Disclaimer from <a
+                href="https://www.icij.org/investigations/paradise-papers/explore-politicians-paradise-papers/">https://www.icij.org/investigations/paradise-papers/explore-politicians-paradise-papers/</a></b>
+        <blockquote class="blockquote">
+            <p class="mb-0">
+                There are legitimate uses for offshore companies and trusts.
+                We do not intend to suggest or imply that any people, companies or other entities included in the ICIJ
+                Offshore Leaks Database have broken the law or otherwise acted improperly.
+                Many people and entities have the same or similar names.
+                We suggest you confirm the identities of any individuals or entities located in the database based on
+                addresses or other identifiable information.
+                If you find an error in the database please <a href="https://offshoreleaks.icij.org/tips/new">get in
+                touch with us</a>.
+            </p>
+            <footer class="blockquote-footer">ICIJ</footer>
+        </blockquote>
     </div>
-    <footer class="footer">
-       Using data from the <a href="http://offshoreleaks.icij.org/database">ICIJ Offshore Leaks</a>, served by <a href="http://neo4j.com/developer" target="_blank">Neo4j</a>.
-	</footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</div>
+<footer th:replace="html_fragments :: footer"></footer>
+<div th:replace="html_fragments :: script_footer"></div>
 </body>
 </html>
