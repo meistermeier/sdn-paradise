@@ -20,6 +20,10 @@ The best way to do this is to click the _Manage_ option in the _Offshore Leaks G
 Read more here: https://developers.google.com/maps/documentation/geocoding/start
 6. Edit the file `src/main/resources/application.properties` accordingly.
 
+=== But I want all the geo data
+Oh great, you got an unlimited geocode api access.
+Checkout this blog post by https://twitter.com/lyonwj/[William Lion]: http://www.lyonwj.com/2017/11/28/geocoding-paradise-papers-neo4j-spatial-visualization/
+
 == Notes
 
 Thanks to https://github.com/bahar/WorldCityLocations for providing a simple csv file with geo coordinates for a bunch of cities.
