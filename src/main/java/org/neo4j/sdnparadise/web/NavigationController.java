@@ -1,8 +1,8 @@
 package org.neo4j.sdnparadise.web;
 
-import org.neo4j.sdnparadise.repository.AddressRepository;
-import org.neo4j.sdnparadise.repository.EntityRepository;
-import org.neo4j.sdnparadise.repository.OfficerRepository;
+import org.neo4j.sdnparadise.address.AddressRepository;
+import org.neo4j.sdnparadise.entity.EntityRepository;
+import org.neo4j.sdnparadise.officer.OfficerRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,8 @@ public class NavigationController {
 	private final EntityRepository entityRepository;
 	private final AddressRepository addressRepository;
 
-	public NavigationController(OfficerRepository officerRepository, EntityRepository entityRepository, AddressRepository addressRepository) {
+	public NavigationController(OfficerRepository officerRepository, EntityRepository entityRepository,
+			AddressRepository addressRepository) {
 		this.officerRepository = officerRepository;
 		this.entityRepository = entityRepository;
 		this.addressRepository = addressRepository;

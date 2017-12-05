@@ -1,14 +1,16 @@
-package org.neo4j.sdnparadise.domain;
+package org.neo4j.sdnparadise.address;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Set;
+
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.typeconversion.Convert;
+import org.neo4j.sdnparadise.entity.Entity;
 import org.springframework.data.geo.Point;
 import org.springframework.data.neo4j.conversion.PointConverter;
 
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @NodeEntity
 public class Address {

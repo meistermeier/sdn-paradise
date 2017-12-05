@@ -1,14 +1,12 @@
-package org.neo4j.sdnparadise.repository;
+package org.neo4j.sdnparadise.address;
 
-import org.neo4j.sdnparadise.domain.Address;
-import org.neo4j.sdnparadise.domain.TopAddress;
+import java.util.List;
+
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Point;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.repository.query.Param;
-
-import java.util.List;
 
 public interface AddressRepository extends Neo4jRepository<Address, Long> {
 

@@ -1,6 +1,4 @@
-package org.neo4j.sdnparadise.web;
-
-import org.springframework.data.geo.Point;
+package org.neo4j.sdnparadise.address;
 
 import java.io.IOException;
 import java.net.URI;
@@ -10,6 +8,8 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.data.geo.Point;
 
 class KnownLocations {
 
@@ -30,6 +30,5 @@ class KnownLocations {
 			}
 		}
 	}
-
 
 }

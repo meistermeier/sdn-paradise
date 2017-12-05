@@ -1,11 +1,10 @@
-package org.neo4j.sdnparadise.repository;
+package org.neo4j.sdnparadise.entity;
 
-import org.neo4j.sdnparadise.domain.Entity;
+import java.util.List;
+
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Point;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
-
-import java.util.List;
 
 public interface EntityRepository extends Neo4jRepository<Entity, Long> {
 

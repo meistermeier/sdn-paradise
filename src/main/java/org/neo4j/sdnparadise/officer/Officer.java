@@ -1,18 +1,15 @@
-package org.neo4j.sdnparadise.domain;
+package org.neo4j.sdnparadise.officer;
 
 import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.sdnparadise.address.Address;
 
 @NodeEntity
-public class Entity {
+public class Officer {
 
 	private Long id;
 
 	private String name;
-
-	@Property(name = "service_provider")
-	private String serviceProvider;
 
 	@Relationship(type = "REGISTERED_ADDRESS")
 	private Address registeredAddress;
@@ -21,16 +18,12 @@ public class Entity {
 		return name;
 	}
 
-	public String getServiceProvider() {
-		return serviceProvider;
-	}
-
 	public Address getRegisteredAddress() {
 		return registeredAddress;
 	}
 
 	@Override
 	public String toString() {
-		return getName() + " sponsored by " + getServiceProvider();
+		return getName();
 	}
 }

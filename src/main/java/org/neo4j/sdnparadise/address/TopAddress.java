@@ -1,4 +1,4 @@
-package org.neo4j.sdnparadise.domain;
+package org.neo4j.sdnparadise.address;
 
 import org.springframework.data.neo4j.annotation.QueryResult;
 

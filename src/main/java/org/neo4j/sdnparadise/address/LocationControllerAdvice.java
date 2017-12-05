@@ -1,10 +1,10 @@
-package org.neo4j.sdnparadise.web;
-
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ModelAttribute;
+package org.neo4j.sdnparadise.address;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @ControllerAdvice
 public class LocationControllerAdvice {

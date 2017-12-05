@@ -6,8 +6,14 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableNeo4jRepositories("org.neo4j.sdnparadise.repository")
-@EntityScan("org.neo4j.sdnparadise.domain")
+@EnableNeo4jRepositories({
+		"org.neo4j.sdnparadise.address",
+		"org.neo4j.sdnparadise.entity",
+		"org.neo4j.sdnparadise.officer" })
+@EntityScan({
+		"org.neo4j.sdnparadise.address",
+		"org.neo4j.sdnparadise.entity",
+		"org.neo4j.sdnparadise.officer" })
 @EnableTransactionManagement
 @SpringBootApplication
 public class DemoApplication {
