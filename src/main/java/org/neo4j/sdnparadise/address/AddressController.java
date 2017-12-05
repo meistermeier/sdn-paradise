@@ -14,14 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AddressController {
 
 	private final AddressRepository addressRepository;
+	private final AddressResolverService addressResolverService;
 
-	public AddressController(AddressRepository addressRepository) {
+	public AddressController(AddressRepository addressRepository, AddressResolverService addressResolverService) {
 		this.addressRepository = addressRepository;
+		this.addressResolverService = addressResolverService;
 	}
 
 	@GetMapping("/address/{id}")
 	public String addressDetails(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("address", addressRepository.findById(id).get()); // <-- (optional) danger zone...
+		Address address = addressRepository.findById(id).get();
+		addressResolverService.updateLocationIfNecessary(address);
+		model.addAttribute("address", address); // <-- (optional) danger zone...
 		return "address_details";
 	}
 
@@ -31,7 +35,7 @@ public class AddressController {
 		if (location == null) {
 			return "address_not_found";
 		}
-		List<Address> addresses = addressRepository.findByLatitudeExistsAndLocationNear(new Distance(100), location);
+		List<Address> addresses = addressRepository.findByLocationExistsAndLocationNear(new Distance(100), location);
 		model.addAttribute("location", value);
 		model.addAttribute("addresses", addresses);
 		model.addAttribute("mapCenter", calculateMapCenter(location, addresses));

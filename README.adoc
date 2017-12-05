@@ -1,19 +1,36 @@
 = Spring Data Neo4j Paradise Papers
 
-Exploring the Paradise Papers (and more) with Spring Data Neo4j.
+Exploring the Paradise Papers with Spring Data Neo4j.
 
-=== See what is the trending place to establish an offshore business
-image:docs/sdn_pp_overview.png[overview, title="Overview"]
+NOTE: To provide you an easy access to the data to setup the environment by yourself, I decided to cut down or deactivate some functionality.
+Currently this application just allows you to browse the Top10 addresses in the database.
+More will come...
 
-=== Visit the top addresses to see who also likes to save a little
-image:docs/sdn_pp_topAddresses.png[topAdresses, title="Top addresses"]
+== How to get started
 
-=== Visit the top addresses to see who also likes to save a little
-image:docs/sdn_pp_address_search.png[addressSearch, title="Address search"]
+The data you will get from ICIJ does not contain any geo information.
+The application will try to resolve the address to a location when opening the details of an address.
 
-NOTE: Currently only usable with a specific data set.
-Stay tuned for more info.
+1. Clone this repository.
+2. Download the Neo4j Desktop matching your OS from https://offshoreleaks.icij.org/pages/database
+3. Start the Neo4j Desktop (it might take a few seconds more on the first run).
+4. Find out on what port Neo4j is available for bolt protocol communication.
+The best way to do this is to click the _Manage_ option in the _Offshore Leaks Graph_ tile on the desktop's start screen.
+5. Create a google api key with access to the geocode api.
+Read more here: https://developers.google.com/maps/documentation/geocoding/start
+6. Edit the file `src/main/resources/application.properties` accordingly.
 
 == Notes
 
 Thanks to https://github.com/bahar/WorldCityLocations for providing a simple csv file with geo coordinates for a bunch of cities.
+
+=== Some outdated pictures
+==== See what is the trending place to establish an offshore business
+image:docs/sdn_pp_overview.png[overview, title="Overview"]
+
+==== Visit the top addresses to see who also likes to save a little
+image:docs/sdn_pp_topAddresses.png[topAdresses, title="Top addresses"]
+
+==== Visit the top addresses to see who also likes to save a little
+image:docs/sdn_pp_address_search.png[addressSearch, title="Address search"]
+

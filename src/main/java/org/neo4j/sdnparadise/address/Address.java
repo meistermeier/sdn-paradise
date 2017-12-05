@@ -20,8 +20,7 @@ public class Address {
 	@Convert(PointConverter.class)
 	private Point location;
 
-	// just needed for existence check on entity
-	private double latitude;
+	private String name;
 
 	private String address;
 
@@ -37,6 +36,18 @@ public class Address {
 
 	public Point getLocation() {
 		return location;
+	}
+
+	public void setLocation(Point location) {
+		this.location = location;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getAddress() {
