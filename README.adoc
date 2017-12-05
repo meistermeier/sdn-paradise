@@ -2,7 +2,7 @@
 
 Exploring the Paradise Papers with Spring Data Neo4j.
 
-NOTE: To provide you an easy access to the data to setup the environment by yourself, I decided to cut down or deactivate some functionality.
+NOTE: To provide you an easy access to the data (no modifications and re-mappings needed), I decided to cut down or deactivate some functionality.
 Currently this application just allows you to browse the Top10 addresses in the database.
 More will come...
 
