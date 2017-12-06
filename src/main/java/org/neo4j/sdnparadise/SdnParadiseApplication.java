@@ -16,9 +16,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 		"org.neo4j.sdnparadise.officer" })
 @EnableTransactionManagement
 @SpringBootApplication
-public class DemoApplication {
+public class SdnParadiseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(SdnParadiseApplication.class, args);
 	}
 }
